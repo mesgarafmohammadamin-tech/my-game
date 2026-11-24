@@ -1,0 +1,589 @@
+
+/* ==============================
+   تنظیمات اصلی
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #090b18;
+    --panel: #111529;
+    --red: #ff3158;
+    --blue: #24baff;
+    --purple: #a855f7;
+    --white: #f5f5ff;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+        radial-gradient(ellipse at 20% 20%, #181536 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, #101e36 0%, transparent 45%),
+        var(--background);
+
+    color: var(--white);
+    font-family: 'Vazirmatn', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 14px 15px 6px;
+    overflow-x: hidden;
+}
+
+/* ==============================
+   ساختار اصلی
+============================== */
+
+.game-container {
+    width: 100%;
+    max-width: 440px;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.brand-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 4px;
+    flex: 0 0 auto;
+}
+
+.brand-logo {
+    display: block;
+    width: clamp(112px, 31vw, 150px);
+    height: auto;
+    object-fit: contain;
+}
+
+.screen {
+    flex: 1 1 auto;
+    min-height: 0;
+    justify-content: center;
+}
+
+.creator-signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 7px;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.signature-logo {
+    display: block;
+    width: clamp(66px, 21vw, 88px);
+    height: auto;
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    animation: fadeIn 0.4s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   صفحه شروع
+============================== */
+
+.game-logo {
+    display: flex;
+    gap: 13px;
+    font-size: 65px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.logo-x {
+    color: var(--red);
+    text-shadow: 0 0 12px #ff3158aa;
+}
+
+.logo-o {
+    color: var(--blue);
+    text-shadow: 0 0 12px #24baffa0;
+}
+
+.main-title {
+    direction: ltr;
+    font-size: clamp(30px, 8vw, 42px);
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-shadow: 0 0 18px #a855f766;
+}
+
+.persian-title {
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-top: 8px;
+    text-shadow: 0 0 15px #a855f755;
+}
+
+.welcome-text {
+    color: #a7a9c2;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* ==============================
+   دکمه‌ها
+============================== */
+
+.menu-buttons,
+.difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.menu-btn,
+.difficulty-btn,
+.back-btn {
+    width: 100%;
+    min-height: 56px;
+    border: 1px solid #ffffff20;
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.menu-btn {
+    background: linear-gradient(135deg, #762de0, #4121a5);
+    color: white;
+    box-shadow: 0 0 15px #8b42ed35;
+}
+
+.menu-btn span {
+    margin-left: 8px;
+}
+
+.menu-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px #a855f766;
+}
+
+.difficulty-btn {
+    color: white;
+    background: #171b30;
+}
+
+.difficulty-btn.easy {
+    border-color: #29d98b80;
+}
+
+.difficulty-btn.medium {
+    border-color: #ffb52b80;
+}
+
+.difficulty-btn.hard {
+    border-color: #ff315880;
+}
+
+.difficulty-btn:hover {
+    transform: scale(1.03);
+    background: #222943;
+}
+
+.back-btn {
+    margin-top: 15px;
+    background: #ffffff0b;
+    color: #c6c8dc;
+}
+
+.back-btn:hover {
+    background: #ffffff18;
+}
+
+/* ==============================
+   صفحه انتخاب سختی
+============================== */
+
+.section-title {
+    font-size: 26px;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.section-description {
+    color: #999db8;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* ==============================
+   صفحه بازی
+============================== */
+
+.game-heading {
+    direction: ltr;
+    font-size: 27px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+.game-frame {
+    width: 100%;
+    padding: 22px;
+    border: 2px solid var(--red);
+    border-radius: 22px;
+
+    background: #111529d9;
+
+    box-shadow:
+        0 0 12px #ff315820,
+        inset 0 0 15px #ffffff05;
+
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.game-frame.turn-x {
+    border-color: var(--red);
+
+    box-shadow:
+        0 0 18px #ff315835,
+        inset 0 0 15px #ff315808;
+}
+
+.game-frame.turn-o {
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 18px #24baff35,
+        inset 0 0 15px #24baff08;
+}
+
+.turn-info {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--red);
+    transition: color 0.3s ease;
+}
+
+/* ==============================
+   جدول دوز
+============================== */
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.cell {
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+
+    border: 1px solid #ffffff18;
+    border-radius: 13px;
+
+    background: #1b2038;
+
+    font-family: inherit;
+    font-size: clamp(42px, 12vw, 65px);
+    font-weight: 800;
+
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.cell:not(:disabled):hover {
+    background: #292e4b;
+    transform: scale(1.035);
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+/* علامت X */
+
+.cell.x {
+    color: var(--red);
+    text-shadow:
+        0 0 8px #ff315866,
+        0 0 18px #ff315822;
+}
+
+/* علامت O */
+
+.cell.o {
+    color: var(--blue);
+    text-shadow:
+        0 0 8px #24baff66,
+        0 0 18px #24baff22;
+}
+
+/* ==============================
+   صفحه نتیجه
+============================== */
+
+.result-panel {
+    width: 100%;
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid #ffffff20;
+    border-radius: 18px;
+    background: #151a30;
+    animation: fadeIn 0.35s ease;
+}
+
+.result-panel.hidden {
+    display: none;
+}
+
+#result-title {
+    font-size: 28px;
+    color: var(--purple);
+    margin-bottom: 8px;
+}
+
+#result-message {
+    color: #b5b8d0;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.result-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-buttons .back-btn {
+    margin-top: 0;
+}
+
+/* ==============================
+   امضای سازنده
+============================== */
+
+.creator-signature {
+    width: 100%;
+    text-align: center;
+    color: #777b98;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 25px;
+    padding: 10px 0;
+    opacity: 0.85;
+}
+
+/* ==============================
+   سازگاری با موبایل
+============================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 8px 15px 4px;
+    }
+
+    .game-container {
+        max-width: 380px;
+    }
+
+    .brand-header {
+        margin-bottom: 0;
+    }
+
+    .brand-logo {
+        width: clamp(108px, 29vw, 132px);
+    }
+
+    #home-screen .game-logo {
+        font-size: 49px;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    #home-screen .main-title {
+        font-size: clamp(27px, 7.5vw, 34px);
+        letter-spacing: 2px;
+    }
+
+    #home-screen .persian-title {
+        font-size: 23px;
+        margin-top: 3px;
+    }
+
+    #home-screen .welcome-text {
+        margin-top: 8px;
+        margin-bottom: 17px;
+        font-size: 13px;
+    }
+
+    .menu-buttons,
+    .difficulty-buttons {
+        gap: 10px;
+    }
+
+    .menu-btn,
+    .difficulty-btn,
+    .back-btn {
+        min-height: 51px;
+    }
+
+    .creator-signature {
+        gap: 5px;
+        margin-top: 5px;
+        padding: 4px 0;
+        font-size: 10px;
+    }
+
+    .signature-logo {
+        width: clamp(64px, 19vw, 76px);
+    }
+
+    .game-frame {
+        padding: 15px;
+    }
+
+    .game-board {
+        gap: 8px;
+    }
+
+    .cell {
+        border-radius: 10px;
+    }
+
+    .game-logo {
+        font-size: 55px;
+    }
+
+    .main-title {
+        letter-spacing: 2px;
+    }
+
+    .creator-signature {
+        font-size: 10px;
+    }
+}
+
+/* ==============================
+   صفحه‌های خیلی کوچک
+============================== */
+
+@media (max-width: 340px) {
+
+    .game-frame {
+        padding: 10px;
+    }
+
+    .game-board {
+        gap: 6px;
+    }
+
+    .game-heading {
+        font-size: 23px;
+    }
+
+    .cell {
+        font-size: 40px;
+    }
+}
+
+
+/* فشرده‌سازی ملایم برای گوشی‌هایی با ارتفاع کم */
+@media (max-height: 720px) and (max-width: 480px) {
+    body {
+        padding-top: 5px;
+        padding-bottom: 2px;
+    }
+
+    .brand-logo {
+        width: 104px;
+    }
+
+    #home-screen .game-logo {
+        font-size: 43px;
+        margin-bottom: 2px;
+    }
+
+    #home-screen .main-title {
+        font-size: 26px;
+    }
+
+    #home-screen .persian-title {
+        font-size: 21px;
+    }
+
+    #home-screen .welcome-text {
+        margin-top: 5px;
+        margin-bottom: 12px;
+    }
+
+    .menu-btn,
+    .difficulty-btn,
+    .back-btn {
+        min-height: 46px;
+    }
+
+    .creator-signature {
+        margin-top: 2px;
+        padding: 2px 0;
+    }
+}
+
+/* در صورت فعال بودن کاهش حرکت در تنظیمات دستگاه */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
